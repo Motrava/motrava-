@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
   try {
     const systemPrompt = type === 'proposal'
-      ? 'Tu es un commercial B2C spécialisé pièces auto. Tu rédiges des propositions commerciales courtes et professionnelles pour France Casse.'
+      ? 'Tu es un commercial B2C spécialisé pièces auto. Tu rédiges des propositions commerciales courtes et professionnelles pour Motrava.'
       : 'Tu es un expert en pièces auto mécaniques. Tu analyses des demandes de pièces et extrais les informations clés en JSON.';
 
     const response = await fetch('https://api.anthropic.com/v1/messages', {
