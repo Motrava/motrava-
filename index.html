@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motrava — Pricing Pro V2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0D1B2A;--navy2:#1B2A3B;--navy3:#243447;--navy4:#2d3f52;--orange:#F97316;--orange2:#FB923C;--green:#22C55E;--green-bg:#DCFCE7;--green-dark:#166534;--red:#EF4444;--red-bg:#FEE2E2;--amber:#F59E0B;--amber-bg:#FEF3C7;--amber-dark:#92400E;--gray1:#F8FAFC;--gray2:#F1F5F9;--gray3:#CBD5E1;--gray4:#64748B;--white:#FFFFFF;--purple:#7C3AED;--purple-bg:#EDE9FE;--dark:#1E293B;--teal:#0D9488}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden}
+.header{background:var(--navy);border-bottom:3px solid var(--orange);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,0.5)}
+.logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--white);letter-spacing:-0.5px}
+.logo span{color:var(--orange)}
+.badge{background:var(--orange);color:#fff;font-size:9px;font-weight:700;padding:3px 7px;border-radius:4px;letter-spacing:1px}
+.tabs{display:flex;background:var(--navy2);border-bottom:1px solid var(--navy3);padding:0 20px;gap:2px;overflow-x:auto}
+.tab{padding:11px 16px;font-size:12px;font-weight:600;color:var(--gray4);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;letter-spacing:0.3px}
+.tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+.tab:hover:not(.active){color:var(--white)}
+.main{padding:16px 20px;max-width:1440px;margin:0 auto}
+.card{background:var(--navy2);border:1px solid var(--navy3);border-radius:10px;padding:16px;margin-bottom:14px}
+.card-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--white);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px}
+.grid-5{display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:10px}
+.fg{margin-bottom:10px}
+.fl{display:block;font-size:10px;font-weight:700;letter-spacing:0.8px;color:var(--gray4);margin-bottom:5px;text-transform:uppercase}
+.fi,.fs,.ft{width:100%;background:var(--navy3);border:1px solid #334155;border-radius:7px;padding:9px 11px;color:var(--white);font-size:13px;font-family:'Inter',sans-serif;transition:border-color .2s;outline:none}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--orange);background:var(--navy4)}
+.fs option{background:var(--navy2)}
+.ft{resize:vertical;min-height:75px}
+.fi::placeholder{color:var(--gray4)}
+.btn{padding:10px 20px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;display:inline-flex;align-items:center;gap:7px;font-family:'Inter',sans-serif}
+.btn-p{background:var(--orange);color:#fff}
+.btn-p:hover{background:var(--orange2);transform:translateY(-1px)}
+.btn-s{background:var(--navy3);color:var(--white);border:1px solid #334155}
+.btn-s:hover{border-color:var(--orange);background:var(--navy4)}
+.btn-g{background:var(--green);color:#fff}
+.btn-g:hover{opacity:.9}
+.btn-sm{padding:7px 13px;font-size:11px}
+.btn-full{width:100%;justify-content:center;padding:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+.result-card{background:var(--navy3);border-radius:10px;padding:16px;border-left:4px solid var(--orange)}
+.result-main{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--orange);line-height:1}
+.result-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gray4);margin-bottom:4px}
+.result-sub{font-size:12px;color:var(--gray4);margin-top:3px}
+.bdg{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:700}
+.bdg-g{background:var(--green-bg);color:var(--green-dark)}
+.bdg-a{background:var(--amber-bg);color:var(--amber-dark)}
+.bdg-r{background:var(--red-bg);color:var(--red)}
+.bdg-b{background:#DBEAFE;color:#1E40AF}
+.bdg-o{background:#FED7AA;color:#C2410C}
+.bdg-p{background:var(--purple-bg);color:var(--purple)}
+.bdg-n{background:var(--navy3);color:var(--gray4)}
+.dec-banner{border-radius:10px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dec-reponds{background:#14532D;border:1px solid var(--green)}
+.dec-negocie{background:#451A03;border:1px solid var(--amber)}
+.dec-passe{background:#450A0A;border:1px solid var(--red)}
+.dec-text{font-family:'Syne',sans-serif;font-size:18px;font-weight:800}
+.prop-box{background:var(--navy3);border:1px solid #334155;border-radius:10px;padding:14px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.8;color:var(--gray2);white-space:pre-wrap;word-break:break-word;min-height:100px}
+.stat-item{background:var(--navy2);border:1px solid var(--navy3);border-radius:9px;padding:14px;text-align:center}
+.stat-value{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--orange)}
+.stat-label{font-size:10px;color:var(--gray4);margin-top:3px;letter-spacing:0.5px;text-transform:uppercase}
+.hist-item{background:var(--navy2);border:1px solid var(--navy3);border-radius:9px;padding:12px 14px;margin-bottom:7px;display:flex;align-items:center;gap:10px;transition:border-color .2s}
+.hist-item:hover{border-color:var(--orange)}
+.hist-ref{font-family:'DM Mono',monospace;font-size:12px;font-weight:500;color:var(--white)}
+.sep{height:1px;background:var(--navy3);margin:14px 0}
+.loading{display:flex;align-items:center;gap:8px;color:var(--gray4);font-size:12px;margin-top:8px}
+.spinner{width:14px;height:14px;border:2px solid var(--navy3);border-top-color:var(--orange);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hidden{display:none!important}
+.alert{padding:10px 14px;border-radius:8px;font-size:12px;margin-bottom:10px;display:flex;align-items:flex-start;gap:8px}
+.alert-w{background:var(--amber-bg);color:var(--amber-dark);border:1px solid var(--amber)}
+.alert-s{background:var(--green-bg);color:var(--green-dark);border:1px solid var(--green)}
+.alert-i{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple)}
+.alert-e{background:var(--red-bg);color:var(--red);border:1px solid var(--red)}
+.row-detail{display:flex;justify-content:space-between;font-size:12px;padding:4px 0;border-bottom:1px solid var(--navy3)}
+.row-detail:last-child{border-bottom:none}
+.section-hdr{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--orange);text-transform:uppercase;margin-bottom:10px;margin-top:4px}
+.steps{display:flex;gap:0;margin-bottom:18px}
+.step{flex:1;padding:10px;background:var(--navy2);border:1px solid var(--navy3);text-align:center}
+.step:first-child{border-radius:8px 0 0 8px}
+.step:last-child{border-radius:0 8px 8px 0}
+.step.active{background:var(--orange);border-color:var(--orange)}
+.step.done{background:#14532D;border-color:var(--green)}
+.step-n{font-family:'Syne',sans-serif;font-size:16px;font-weight:800}
+.step-l{font-size:10px;color:rgba(255,255,255,.7);margin-top:1px}
+.ai-box{background:linear-gradient(135deg,#1a1a2e 0%,var(--navy2) 100%);border:1px solid #7C3AED33;border-radius:10px;padding:16px;margin-bottom:14px}
+.ai-label{font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--purple);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.coeff-pill{display:inline-flex;align-items:center;gap:4px;background:var(--navy3);border-radius:6px;padding:4px 8px;font-size:11px;margin:2px}
+.coeff-pill strong{color:var(--orange)}
+.ref-table{width:100%;border-collapse:collapse;font-size:12px}
+.ref-table th{background:var(--navy3);padding:8px 10px;text-align:left;font-weight:600;color:var(--gray4);font-size:10px;letter-spacing:0.5px;text-transform:uppercase}
+.ref-table td{padding:8px 10px;border-bottom:1px solid var(--navy3)}
+.ref-table tr:last-child td{border-bottom:none}
+.ref-table tr:hover td{background:var(--navy3)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.override-section{background:var(--navy3);border-radius:9px;padding:14px;margin-bottom:14px}
+.price-psycho{background:linear-gradient(135deg,var(--navy3),var(--navy4));border:1px solid var(--orange);border-radius:9px;padding:12px;margin-top:10px;text-align:center}
+.price-psycho-val{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--orange)}
+.price-psycho-label{font-size:10px;color:var(--gray4);margin-bottom:4px;letter-spacing:0.5px;text-transform:uppercase}
+@media(max-width:768px){.grid-2,.grid-3,.grid-4,.grid-5{grid-template-columns:1fr}.main{padding:12px}.header{padding:0 12px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="logo">MOTRAVA<span>.</span></div>
+    <div class="badge">PRICING PRO V2</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div id="hdr-stats" style="font-size:11px;color:var(--gray4)">0 deals · 0€ marge</div>
+    <div style="width:8px;height:8px;background:var(--green);border-radius:50%"></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="pricing">🔧 Pricing</button>
+  <button class="tab" data-tab="proposal">📝 Proposition</button>
+  <button class="tab" data-tab="history">📊 Historique</button>
+  <button class="tab" data-tab="ref">📋 Référentiels</button>
+  <button class="tab" data-tab="params">⚙️ Paramètres</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PRICING TAB -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="tab-pricing" class="main tab-content active">
+  <div class="steps">
+    <div class="step active" id="stp1"><div class="step-n">1</div><div class="step-l">Demande</div></div>
+    <div class="step" id="stp2"><div class="step-n">2</div><div class="step-l">Pièce</div></div>
+    <div class="step" id="stp3"><div class="step-n">3</div><div class="step-l">Résultat</div></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+  
+  <!-- LEFT FORM -->
+  <div>
+    <!-- AI BOX -->
+    <div class="ai-box">
+      <div class="ai-label">✨ IA — Coller la demande France Casse</div>
+      <div class="fg">
+        <textarea class="ft" id="dem-text" placeholder="Ex: Bonjour je cherche un moteur pour ma Renault Clio IV 1.5 dCi 2014, besoin urgent" style="min-height:85px"></textarea>
+      </div>
+      <button class="btn btn-p btn-sm" id="parse-btn" onclick="parseAI()">✨ Analyser avec l'IA</button>
+      <div class="loading hidden" id="parse-load"><div class="spinner"></div>Analyse en cours...</div>
+      <div id="parse-result"></div>
+    </div>
+
+    <!-- ORGANE & SEGMENT -->
+    <div class="card">
+      <div class="card-title">🔩 Pièce & Véhicule</div>
+      <div class="grid-2">
+        <div class="fg">
+          <label class="fl">Type d'organe *</label>
+          <select class="fs" id="f-organe" onchange="onOrganeChange()">
+            <option value="">— Sélectionner —</option>
+            <option value="Moteur">🔧 Moteur</option>
+            <option value="Boîte de vitesses">⚙️ Boîte de vitesses</option>
+            <option value="Turbo">🌀 Turbo</option>
+            <option value="Injecteur">💧 Injecteur</option>
+            <option value="Pompe à injection">⛽ Pompe à injection</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Segment véhicule *</label>
+          <select class="fs" id="f-segment">
+            <option value="">— Sélectionner —</option>
+            <option value="Citadine">🏙️ Citadine (Clio, Polo, 207, Aygo...)</option>
+            <option value="Berline">🚗 Berline (Golf, 308, Mégane, Focus...)</option>
+            <option value="Utilitaire">🚐 Utilitaire (Trafic, Transit, Master...)</option>
+            <option value="SUV/4x4">🏔️ SUV / 4x4 (RAV4, Qashqai, X5...)</option>
+            <option value="Premium/Sport">⭐ Premium / Sport (BMW, Merc, Audi...)</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="fg">
+          <label class="fl">Référence pièce</label>
+          <input class="fi" id="f-code" placeholder="Ex: K9K628, 20MB51, N47D20C...">
+        </div>
+        <div class="fg">
+          <label class="fl">État de la pièce *</label>
+          <select class="fs" id="f-etat">
+            <option value="Occasion">Occasion</option>
+            <option value="Echange std">Échange standard (ES)</option>
+            <option value="Neuf">Neuf</option>
+            <option value="Reconditionné">Reconditionné</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- MOTEUR CONFIG -->
+      <div id="sec-moteur" class="hidden">
+        <div class="sep" style="margin:10px 0"></div>
+        <div class="section-hdr">🔩 Configuration moteur</div>
+        <div class="fg">
+          <label class="fl">Type de configuration</label>
+          <select class="fs" id="f-config">
+            <option value="Moteur nu">Moteur nu — bloc + culasse + carter (base)</option>
+            <option value="Moteur complet (turbo seul)">Complet — avec turbo (+150€ marge)</option>
+            <option value="Moteur complet (injection seule)">Complet — avec injection (+100€ marge)</option>
+            <option value="Moteur complet (turbo+injection)">Complet — turbo + injection (+220€ marge)</option>
+            <option value="Moteur complet total (tous périphériques)">Complet total — tous périphériques (+300€ marge)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- BOITE CONFIG -->
+      <div id="sec-bv" class="hidden">
+        <div class="sep" style="margin:10px 0"></div>
+        <div class="section-hdr">⚙️ Type de transmission</div>
+        <div class="grid-2">
+          <div class="fg">
+            <label class="fl">Type de boîte</label>
+            <select class="fs" id="f-trans">
+              <option value="Manuelle">Manuelle (×1.00 — base)</option>
+              <option value="Automatique convertisseur (EAT/ZF/9G)">Auto convertisseur — EAT/ZF8/9G-Tronic (×1.35)</option>
+              <option value="Double embrayage (DSG/EDC/PDK)">Double embrayage — DSG/EDC/S-Tronic/PDK (×1.45)</option>
+              <option value="Robotisée simple (AMT)">Robotisée simple — AMT/ETG/Easy-R (×0.90)</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl">Références courantes</label>
+            <input class="fi" id="f-bv-ref" placeholder="Ex: DSG6, EAT8, ZF8HP..." readonly style="color:var(--gray4)">
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="fg">
+            <label class="fl">Nb vitesses</label>
+            <select class="fs" id="f-nbv">
+              <option value="5">5 vitesses</option>
+              <option value="6" selected>6 vitesses</option>
+              <option value="7">7 vitesses</option>
+              <option value="8">8 vitesses</option>
+              <option value="9">9 vitesses</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl">Traction</label>
+            <select class="fs" id="f-traction">
+              <option value="FWD">Traction (FWD)</option>
+              <option value="RWD">Propulsion (RWD)</option>
+              <option value="AWD">4x4 (AWD)</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl">Position</label>
+            <select class="fs" id="f-pos">
+              <option value="transversale">Transversale</option>
+              <option value="longitudinale">Longitudinale</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIX & KM -->
+    <div class="card">
+      <div class="card-title">💶 Tarification fournisseur</div>
+      <div class="grid-3">
+        <div class="fg">
+          <label class="fl">Prix fournisseur HT (€) *</label>
+          <input class="fi" id="f-prix" type="number" placeholder="Ex: 760">
+        </div>
+        <div class="fg">
+          <label class="fl">Port fournisseur (€)</label>
+          <input class="fi" id="f-port" type="number" placeholder="0" value="0">
+          <div style="font-size:10px;color:var(--gray4);margin-top:3px">0 si inclus ou refacturé client</div>
+        </div>
+        <div class="fg">
+          <label class="fl">Coût réel HT (€)</label>
+          <input class="fi" id="f-cout" readonly style="color:var(--orange);font-weight:600" placeholder="Auto-calculé">
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="fg">
+          <label class="fl">Kilométrage (km)</label>
+          <input class="fi" id="f-km" type="number" placeholder="Ex: 115874" onchange="updateCout()">
+        </div>
+        <div class="fg">
+          <label class="fl">Garantie</label>
+          <select class="fs" id="f-gar">
+            <option value="6">6 mois</option>
+            <option value="12" selected>12 mois</option>
+            <option value="24">24 mois</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Délai livraison</label>
+          <select class="fs" id="f-delai">
+            <option value="0">Disponible immédiat (J+0)</option>
+            <option value="1" selected>J+1 (standard)</option>
+            <option value="2">J+2 à J+3</option>
+            <option value="5">J+5 ou plus</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- MARQUE & MOTEUR -->
+    <div class="card">
+      <div class="card-title">🏷️ Famille marque & motorisation</div>
+      <div class="grid-2">
+        <div class="fg">
+          <label class="fl">Famille marque</label>
+          <select class="fs" id="f-marque">
+            <option value="Economique">🟦 Économique ×0.92 — Dacia, Fiat Panda, Twingo I...</option>
+            <option value="Standard" selected>🟩 Standard ×1.00 — Renault, Peugeot, VW, Ford...</option>
+            <option value="Premium">🟨 Premium ×1.18 — BMW, Mercedes, Audi, Volvo...</option>
+            <option value="Sport/Rare">🟥 Sport/Rare ×1.32 — BMW M, AMG, RS, Porsche...</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Famille motorisation</label>
+          <select class="fs" id="f-moteur">
+            <option value="Diesel commun" selected>Diesel commun ×1.00 — 1.5dCi, 1.6HDI, 2.0TDI...</option>
+            <option value="Diesel haut de gamme">Diesel HDG ×1.10 — 3.0TDI, 3.0CDI, N47, N57...</option>
+            <option value="Essence commun">Essence commun ×1.05 — 1.2TSI, 1.4VTi, EP6, H5F...</option>
+            <option value="Essence sportif/rare">Essence sportif ×1.18 — 2.0TFSI, N55, AMG V8...</option>
+            <option value="Hybride">Hybride ×1.12 — Toyota THS, Honda MMD, E-Tech...</option>
+            <option value="Electrique">Électrique ×1.22 — Renault ZE, Nissan EM57, MEB...</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTEXTE COMMERCIAL -->
+    <div class="card">
+      <div class="card-title">👤 Contexte commercial</div>
+      <div class="grid-5">
+        <div class="fg">
+          <label class="fl">Client</label>
+          <select class="fs" id="f-client">
+            <option value="Nouveau">Nouveau (+2pts)</option>
+            <option value="Fidèle">Fidèle (0pt)</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Rareté</label>
+          <select class="fs" id="f-rare">
+            <option value="Courante">Courante (0pt)</option>
+            <option value="Rare">Rare (+1pt)</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Urgence</label>
+          <select class="fs" id="f-urg">
+            <option value="Non">Non (0pt)</option>
+            <option value="Oui">Urgente (+1pt)</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Profil client</label>
+          <select class="fs" id="f-profil">
+            <option value="Particulier">Particulier</option>
+            <option value="Professionnel">Pro / Garage</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">Nb résultats MC</label>
+          <input class="fi" id="f-nb" type="number" placeholder="Ex: 5" min="0">
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-p btn-full" style="font-size:15px" onclick="calculer()">
+      🔢 Calculer le pricing V10
+    </button>
+  </div>
+
+  <!-- RIGHT RESULTS -->
+  <div id="res-wrap">
+    <div id="res-placeholder" class="card" style="text-align:center;padding:60px 20px;border:2px dashed var(--navy3)">
+      <div style="font-size:48px;margin-bottom:16px">🔧</div>
+      <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--gray4)">Remplis le formulaire<br>et lance le calcul</div>
+    </div>
+
+    <div id="res-content" class="hidden">
+      <!-- DECISION -->
+      <div id="dec-banner" class="dec-banner dec-reponds">
+        <div>
+          <div style="font-size:10px;letter-spacing:1px;opacity:.7;margin-bottom:3px">DÉCISION</div>
+          <div class="dec-text" id="dec-text">🟢 RÉPONDS</div>
+          <div style="font-size:11px;opacity:.7;margin-top:2px" id="dec-sub"></div>
+        </div>
+        <div style="text-align:right">
+          <div id="niv-badge" class="bdg bdg-b" style="margin-bottom:6px">N2</div>
+          <div id="score-info" style="font-size:10px;color:rgba(255,255,255,.6)"></div>
+        </div>
+      </div>
+
+      <!-- MAIN PRICES -->
+      <div class="grid-2" style="margin-bottom:14px">
+        <div class="result-card">
+          <div class="result-label">Prix vente TTC</div>
+          <div class="result-main" id="r-ttc">—</div>
+          <div class="result-sub" id="r-ht">— HT</div>
+        </div>
+        <div class="result-card" style="border-left-color:var(--green)">
+          <div class="result-label">Marge recommandée</div>
+          <div class="result-main" style="color:var(--green)" id="r-marge">—</div>
+          <div class="result-sub" id="r-pct">—% du CA</div>
+        </div>
+      </div>
+
+      <!-- PRIX PSYCHO -->
+      <div class="price-psycho" style="margin-bottom:14px">
+        <div class="price-psycho-label">💡 Prix psychologique suggéré</div>
+        <div class="price-psycho-val" id="r-psycho">—</div>
+        <div style="font-size:10px;color:var(--gray4);margin-top:3px">Arrondi au palier vendeur optimal</div>
+      </div>
+
+      <!-- DETAILS -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title" style="margin-bottom:10px">📊 Détail du calcul</div>
+        <div class="row-detail"><span style="color:var(--gray4)">Coût réel (achat + port)</span><span id="r-cout">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Barème base (avant coefficients)</span><span id="r-bareme">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Coeff. segment</span><span id="r-cseg">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Coeff. marque</span><span id="r-cmarque">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Coeff. motorisation</span><span id="r-cmoteur">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Coeff. transmission BV</span><span id="r-ctrans">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Ajustement kilométrage</span><span id="r-ckm">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Risque SAV</span><span id="r-sav">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Bonus config moteur</span><span id="r-cfg">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Plancher minimum</span><span id="r-plancher">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Plafond TTC marché</span><span id="r-plafond">—</span></div>
+        <div class="sep"></div>
+        <div class="row-detail"><span style="color:var(--gray4);font-weight:600">Marge recommandée finale</span><span id="r-mfin" style="color:var(--orange);font-weight:700">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4);font-weight:600">Prix vente HT</span><span id="r-pht" style="font-weight:600">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4);font-weight:600">Prix vente TTC</span><span id="r-pttc" style="color:var(--orange);font-weight:700">—</span></div>
+        <div class="row-detail"><span style="color:var(--gray4)">Marge nette (après charges)</span><span id="r-nette" style="color:var(--green);font-weight:600">—</span></div>
+      </div>
+
+      <!-- OVERRIDE -->
+      <div class="override-section" style="margin-bottom:14px">
+        <div style="font-size:12px;font-weight:700;color:var(--white);margin-bottom:10px">✏️ Override marge manuelle</div>
+        <div style="display:flex;gap:8px">
+          <input class="fi" id="ov-input" type="number" placeholder="Saisir marge différente..." style="flex:1">
+          <button class="btn btn-s btn-sm" onclick="applyOv()">Appliquer</button>
+          <button class="btn btn-s btn-sm" onclick="clearOv()">Reset</button>
+        </div>
+        <div id="ov-alert" class="alert alert-w hidden" style="margin-top:8px"></div>
+      </div>
+
+      <!-- ALERTS -->
+      <div id="alerts-div"></div>
+
+      <!-- ACTIONS -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-g btn-sm" onclick="goProposal()">📝 Générer proposition</button>
+        <button class="btn btn-s btn-sm" onclick="saveDeal()">💾 Sauvegarder</button>
+        <button class="btn btn-s btn-sm" onclick="resetForm()">🔄 Nouveau deal</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PROPOSAL TAB -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="tab-proposal" class="main tab-content hidden">
+  <div class="grid-2" style="gap:20px;align-items:start">
+    <div>
+      <div class="card">
+        <div class="card-title">📝 Paramètres proposition</div>
+        <div class="fg">
+          <label class="fl">Type de pièce (tel qu'affiché)</label>
+          <input class="fi" id="pp-type" placeholder="Ex: Moteur occasion complet (turbo + injection)">
+        </div>
+        <div class="grid-2">
+          <div class="fg">
+            <label class="fl">Année véhicule</label>
+            <input class="fi" id="pp-an" placeholder="2017">
+          </div>
+          <div class="fg">
+            <label class="fl">Kilométrage</label>
+            <input class="fi" id="pp-km" placeholder="115 874">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="fg">
+            <label class="fl">Prix TTC (€)</label>
+            <input class="fi" id="pp-prix" type="number" placeholder="1 980">
+          </div>
+          <div class="fg">
+            <label class="fl">Frais de port TTC</label>
+            <input class="fi" id="pp-port" placeholder="Offert / 80€...">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="fg">
+            <label class="fl">Garantie</label>
+            <select class="fs" id="pp-gar">
+              <option value="6 mois">6 mois</option>
+              <option value="12 mois" selected>12 mois</option>
+              <option value="24 mois">24 mois</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl">Autres offres dispo ?</label>
+            <select class="fs" id="pp-autres">
+              <option value="non">Non</option>
+              <option value="oui">Oui — le mentionner</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="fl">Argument fort à mettre en avant</label>
+          <input class="fi" id="pp-arg" placeholder="Ex: kilométrage très faible, moteur complet, seul dispo en France...">
+        </div>
+        <button class="btn btn-p btn-full" onclick="genProp()">✨ Générer avec l'IA</button>
+        <div class="loading hidden" id="prop-load" style="margin-top:10px"><div class="spinner"></div>Génération...</div>
+      </div>
+
+      <!-- TEMPLATE STANDARD -->
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div class="card-title" style="margin-bottom:0">📋 Template standard</div>
+          <button class="btn btn-s btn-sm" onclick="copyText('tpl-std')">Copier</button>
+        </div>
+        <div class="prop-box" id="tpl-std">Bonjour,
+
+[TYPE DE PIÈCE] — [ÉTAT] — [ANNÉE] — [KM] km
+✅ Testé et contrôlé — Garantie [X] mois — SAV 6j/7
+🚚 Frais de port : [X] € TTC
+
+Prix : [X] € TTC
+
+D'autres références disponibles selon km et garantie.
+Contactez-nous pour toute question.</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div class="card-title" style="margin-bottom:0">🤖 Proposition IA personnalisée</div>
+          <button class="btn btn-s btn-sm" onclick="copyText('prop-out')">📋 Copier</button>
+        </div>
+        <div class="prop-box" id="prop-out" style="color:var(--gray4);min-height:180px">La proposition personnalisée apparaîtra ici après génération...</div>
+      </div>
+
+      <!-- PHONE SCRIPT -->
+      <div class="card">
+        <div class="card-title">📞 Script d'appel téléphonique</div>
+        <div style="font-size:12px;line-height:1.9;color:var(--gray2)">
+          <div style="margin-bottom:8px"><span style="color:var(--orange);font-weight:600">Décrocher :</span><br>"Motrava bonjour, Jibril à l'appareil."</div>
+          <div style="margin-bottom:8px"><span style="color:var(--orange);font-weight:600">Qualifier :</span><br>"Vous avez le modèle exact et l'année du véhicule ?"<br>"Vous cherchez occasion ou vous êtes ouvert à de l'échange standard avec garantie plus longue ?"</div>
+          <div style="margin-bottom:8px"><span style="color:var(--orange);font-weight:600">Annoncer le prix :</span><br>"On peut vous proposer cette pièce à [X]€ TTC, livraison [X]j, [X] mois de garantie."</div>
+          <div style="margin-bottom:8px"><span style="color:var(--orange);font-weight:600">Si il hésite :</span><br>"C'est le meilleur rapport km/garantie disponible sur cette référence. Le SAV est inclus."</div>
+          <div><span style="color:var(--orange);font-weight:600">Conclure :</span><br>"Je vous envoie la confirmation par mail. Votre adresse ?"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HISTORY TAB -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="tab-history" class="main tab-content hidden">
+  <div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap">
+    <div class="stat-item" style="flex:1;min-width:120px"><div class="stat-value" id="st-deals">0</div><div class="stat-label">Deals</div></div>
+    <div class="stat-item" style="flex:1;min-width:120px"><div class="stat-value" id="st-ca">0€</div><div class="stat-label">CA HT</div></div>
+    <div class="stat-item" style="flex:1;min-width:120px"><div class="stat-value" id="st-mb">0€</div><div class="stat-label">Marge brute</div></div>
+    <div class="stat-item" style="flex:1;min-width:120px"><div class="stat-value" id="st-mn">0€</div><div class="stat-label">Marge nette</div></div>
+    <div class="stat-item" style="flex:1;min-width:120px"><div class="stat-value" id="st-pct">0%</div><div class="stat-label">Marge %</div></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+      <div class="card-title" style="margin-bottom:0">📋 Deals sauvegardés</div>
+      <button class="btn btn-s btn-sm" onclick="clearHist()">🗑️ Vider</button>
+    </div>
+    <div id="hist-list"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- RÉFÉRENTIELS TAB -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="tab-ref" class="main tab-content hidden">
+  <div class="grid-2" style="gap:16px">
+    <div>
+      <div class="card">
+        <div class="card-title">🏷️ Familles marques</div>
+        <table class="ref-table">
+          <tr><th>Famille</th><th>Coeff.</th><th>Marques</th></tr>
+          <tr><td>🟦 Économique</td><td><span class="bdg bdg-b">×0.92</span></td><td style="color:var(--gray4)">Dacia, Citroën C1/Saxo, Peugeot 106/107, Fiat Panda, Opel Corsa B/C, Twingo I/II, Lada</td></tr>
+          <tr><td>🟩 Standard</td><td><span class="bdg bdg-g">×1.00</span></td><td style="color:var(--gray4)">Peugeot 206-308, Citroën C3-C5, Renault Clio-Mégane, VW Golf-Passat, Ford, Toyota, Hyundai, Kia, Mazda, Seat, Škoda, Nissan, Opel</td></tr>
+          <tr><td>🟨 Premium</td><td><span class="bdg bdg-a">×1.18</span></td><td style="color:var(--gray4)">BMW Série 1-7, Mercedes A-S, Audi A1-A8, Volvo, Land Rover, Lexus, Infiniti</td></tr>
+          <tr><td>🟥 Sport/Rare</td><td><span class="bdg bdg-r">×1.32</span></td><td style="color:var(--gray4)">BMW M, Mercedes AMG, Audi RS/S, Porsche, Ferrari, Lamborghini, Maserati, Jaguar, Alfa Quadrifoglio</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🔋 Familles motorisation</div>
+        <table class="ref-table">
+          <tr><th>Famille</th><th>Coeff.</th><th>Références courantes</th></tr>
+          <tr><td>Diesel commun</td><td><span class="bdg bdg-g">×1.00</span></td><td style="color:var(--gray4)">1.5dCi/BlueHDi, 1.6TDI/HDI/CDTi, 1.9TDI/DTI, 2.0HDI/TDI/dCi, K9K, 8HX, RHK, DW10, G9U</td></tr>
+          <tr><td>Diesel HDG</td><td><span class="bdg bdg-a">×1.10</span></td><td style="color:var(--gray4)">3.0TDI/TDV6, 3.0CDI, N47, N57, M57, V6 diesel, 2.0 Biturbo diesel</td></tr>
+          <tr><td>Essence commun</td><td><span class="bdg bdg-b">×1.05</span></td><td style="color:var(--gray4)">1.2TSI, 1.4VTi/TU5, 1.6THP, EP6, H5F403/H5FD, PureTech, 1.8TSI</td></tr>
+          <tr><td>Essence sportif</td><td><span class="bdg bdg-o">×1.18</span></td><td style="color:var(--gray4)">2.0TFSI EA888, 3.0TFSI V6, N52/N55/S55 BMW, AMG V8, V10, V12</td></tr>
+          <tr><td>Hybride</td><td><span class="bdg bdg-p">×1.12</span></td><td style="color:var(--gray4)">Toyota THS (Prius/Yaris), Honda i-MMD, E-Tech Renault, Peugeot Hybrid4</td></tr>
+          <tr><td>Électrique</td><td><span class="bdg bdg-p">×1.22</span></td><td style="color:var(--gray4)">Renault ZE, Nissan EM57/EM61, Tesla Drive Unit, VW MEB, Hyundai/Kia e-motor</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="card-title">⚙️ Types de transmission BV</div>
+        <table class="ref-table">
+          <tr><th>Type</th><th>Coeff.</th><th>Références</th></tr>
+          <tr><td>Manuelle</td><td><span class="bdg bdg-g">×1.00</span></td><td style="color:var(--gray4)">JH3/JH5 Renault, BE Peugeot, IB5 Ford, PF6/PK5 Opel, RHK Citroën, 20MB51 PSA utilitaire, MQ200/250 VW, F17 Renault</td></tr>
+          <tr><td>Auto convertisseur</td><td><span class="bdg bdg-a">×1.35</span></td><td style="color:var(--gray4)">EAT6/EAT8 PSA, ZF6HP/ZF8HP BMW-Audi, 9G-Tronic Mercedes, Aisin Toyota, RE7R01A Nissan, AW6-55SC Volvo</td></tr>
+          <tr><td>Double embrayage</td><td><span class="bdg bdg-o">×1.45</span></td><td style="color:var(--gray4)">DSG6/DSG7 VW-Seat-Skoda, S-Tronic Audi, EDC Renault, DCT Hyundai-Kia, PDK Porsche, DKG BMW M, TCT Alfa Romeo</td></tr>
+          <tr><td>Robotisée simple</td><td><span class="bdg bdg-r">×0.90</span></td><td style="color:var(--gray4)">ETG Peugeot-Citroën, Easy-R Renault, AMT Fiat, Easytronic Opel — moins fiable, moins demandée</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎯 Plafonds TTC par segment</div>
+        <table class="ref-table">
+          <tr><th>Segment</th><th>Moteur nu</th><th>Moteur complet</th><th>BV manuelle</th><th>BV auto conv.</th><th>BV DSG</th></tr>
+          <tr><td>🏙️ Citadine</td><td>1 800€</td><td>2 600€</td><td>1 100€</td><td>2 200€</td><td>2 800€</td></tr>
+          <tr><td>🚗 Berline</td><td>3 200€</td><td>4 500€</td><td>2 000€</td><td>3 500€</td><td>4 500€</td></tr>
+          <tr><td>🚐 Utilitaire</td><td>5 500€</td><td>7 500€</td><td>3 500€</td><td>5 000€</td><td>6 000€</td></tr>
+          <tr><td>🏔️ SUV/4x4</td><td>7 000€</td><td>9 500€</td><td>4 000€</td><td>6 000€</td><td>7 500€</td></tr>
+          <tr><td>⭐ Premium</td><td>9 000€</td><td>12 000€</td><td>5 000€</td><td>8 000€</td><td>10 000€</td></tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📏 Planchers minimum marge</div>
+        <table class="ref-table">
+          <tr><th>Catégorie</th><th>6 mois</th><th>12 mois</th><th>24 mois</th><th>ES</th></tr>
+          <tr><td>🔧 Moteur</td><td>400€</td><td>500€</td><td>650€</td><td>700€</td></tr>
+          <tr><td>⚙️ BV Manuelle</td><td>300€</td><td>350€</td><td>450€</td><td>550€</td></tr>
+          <tr><td>🤖 BV Auto conv.</td><td>350€</td><td>450€</td><td>650€</td><td>750€</td></tr>
+          <tr><td>🔀 BV DSG/EDC</td><td>450€</td><td>600€</td><td>800€</td><td>900€</td></tr>
+          <tr><td>🌀 Turbo</td><td colspan="4" style="text-align:center">120€ (flat)</td></tr>
+          <tr><td>💧 Injecteur</td><td colspan="4" style="text-align:center">100€ (flat)</td></tr>
+          <tr><td>⛽ Pompe injection</td><td colspan="4" style="text-align:center">110€ (flat)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- PARAMS TAB -->
+<!-- ═══════════════════════════════════════════════ -->
+<div id="tab-params" class="main tab-content hidden">
+  <div class="grid-2" style="gap:16px">
+    <div>
+      <div class="card">
+        <div class="card-title">💶 Charges fixes mensuelles</div>
+        <div id="charges-wrap"></div>
+        <div class="sep"></div>
+        <div class="row-detail" style="font-weight:600"><span>Total mensuel</span><span id="ch-total" style="color:var(--orange)">0€</span></div>
+        <div class="row-detail">
+          <span style="color:var(--gray4)">Deals estimés/mois</span>
+          <input class="fi" id="ch-deals" type="number" value="15" style="width:70px;padding:5px 8px;text-align:center" onchange="updateCharges()">
+        </div>
+        <div class="row-detail"><span style="color:var(--gray4)">Charge par deal</span><span id="ch-deal" style="color:var(--green);font-weight:600">0€</span></div>
+        <button class="btn btn-s btn-sm" style="margin-top:12px" onclick="addCharge()">+ Ajouter charge</button>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-title">⚙️ Logique de calcul V10</div>
+        <div style="font-size:12px;line-height:2;color:var(--gray2)">
+          <div><strong style="color:var(--orange)">Niveau scoring :</strong> Nouveau=2pts · Rare=1pt · Urgence=1pt → N1(0) N2(1-2) N3(3) N4(4)</div>
+          <div><strong style="color:var(--orange)">Marge reco :</strong> MAX(barème × coefficients, plancher_min, marge_dyn_achat)</div>
+          <div><strong style="color:var(--orange)">Marge dyn. :</strong> &lt;400€→50% · 400-800€→40% · 800-1500€→30% · 1500-3000€→22% · &gt;3000€→18% plafonné 1000€</div>
+          <div><strong style="color:var(--orange)">Km ajustement :</strong> &lt;80k→+4% · 80-180k→base · &gt;180k→-8%</div>
+          <div><strong style="color:var(--orange)">Risque SAV :</strong> Moteur &gt;130k→+4% · &gt;180k→+8%</div>
+          <div><strong style="color:var(--orange)">Plafond :</strong> Prix TTC ne peut pas dépasser le plafond segment × type</div>
+          <div><strong style="color:var(--orange)">Prix psycho :</strong> Arrondi au palier optimal (x90, x50, x00)</div>
+          <div><strong style="color:var(--orange)">Marge nette :</strong> Marge brute − charges fixes ÷ nb deals/mois</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">🔑 Clé API (pour l'IA)</div>
+        <div style="font-size:12px;color:var(--gray4);margin-bottom:10px">La clé API est configurée sur Vercel en variable d'environnement ANTHROPIC_API_KEY. Ne la saisit jamais ici.</div>
+        <div class="alert alert-i">ℹ️ Pour modifier la clé : Vercel → Settings → Environment Variables → ANTHROPIC_API_KEY</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+const S = {
+  result: null,
+  override: null,
+  history: JSON.parse(localStorage.getItem('mv_hist') || '[]'),
+  charges: JSON.parse(localStorage.getItem('mv_charges') || JSON.stringify([
+    {label:'AXA RC Pro',val:83},{label:'Axonaut CRM',val:30},
+    {label:'Domiciliation Paris 8e',val:50},{label:'Qonto',val:9},
+    {label:'Frais divers',val:20},{label:'Autre',val:0}
+  ])),
+};
+
+// ═══════════════════════════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════════════════════════
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', function() {
+    const name = this.dataset.tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => { t.classList.remove('active'); t.classList.add('hidden'); });
+    this.classList.add('active');
+    const el = document.getElementById('tab-'+name);
+    el.classList.add('active'); el.classList.remove('hidden');
+    if (name === 'history') renderHistory();
+    if (name === 'params') renderParams();
+  });
+});
+
+// ═══════════════════════════════════════════════════════════════
+// FORM HELPERS
+// ═══════════════════════════════════════════════════════════════
+function onOrganeChange() {
+  const org = gv('f-organe');
+  document.getElementById('sec-moteur').classList.toggle('hidden', org !== 'Moteur');
+  document.getElementById('sec-bv').classList.toggle('hidden', org !== 'Boîte de vitesses');
+  const transRefs = {
+    'Manuelle': 'JH3, JH5, BE, IB5, PF6, RHK, 20MB51, MQ200...',
+    'Automatique convertisseur (EAT/ZF/9G)': 'EAT6, EAT8, ZF6HP, ZF8HP, 9G-Tronic, Aisin...',
+    'Double embrayage (DSG/EDC/PDK)': 'DSG6, DSG7, S-Tronic, EDC, PDK, DKG...',
+    'Robotisée simple (AMT)': 'ETG, Easy-R, AMT, Easytronic...',
+  };
+  document.getElementById('f-trans').addEventListener('change', function() {
+    document.getElementById('f-bv-ref').value = transRefs[this.value] || '';
+  });
+}
+
+function gv(id) { return document.getElementById(id)?.value || ''; }
+function sv(id, val) { const el = document.getElementById(id); if(el) el.value = val; }
+function fmt(n) { return Math.round(n).toLocaleString('fr-FR') + ' €'; }
+function fmtPct(n) { return (n*100).toFixed(1) + '%'; }
+
+function updateCout() {
+  const p = parseFloat(gv('f-prix')) || 0;
+  const port = parseFloat(gv('f-port')) || 0;
+  sv('f-cout', p+port > 0 ? fmt(p+port) : '');
+}
+
+document.getElementById('f-prix').addEventListener('input', updateCout);
+document.getElementById('f-port').addEventListener('input', updateCout);
+
+// ═══════════════════════════════════════════════════════════════
+// PRICING ENGINE V10
+// ═══════════════════════════════════════════════════════════════
+function plancher(org, etat, gar, trans) {
+  const g = parseInt(gar);
+  if (org === 'Moteur') {
+    if (etat === 'Echange std') return 700;
+    if (etat === 'Reconditionné') return 550;
+    if (etat === 'Neuf') return 500;
+    if (g >= 24) return 650; if (g >= 12) return 500; if (g >= 6) return 400; return 350;
+  }
+  if (org === 'Boîte de vitesses') {
+    if (trans === 'Double embrayage (DSG/EDC/PDK)') {
+      if (etat === 'Echange std') return 900;
+      if (g >= 24) return 800; if (g >= 12) return 600; return 450;
+    }
+    if (trans === 'Automatique convertisseur (EAT/ZF/9G)') {
+      if (etat === 'Echange std') return 750;
+      if (g >= 24) return 650; if (g >= 12) return 450; return 350;
+    }
+    if (etat === 'Echange std') return 550;
+    if (g >= 24) return 450; if (g >= 12) return 350; if (g >= 6) return 300; return 250;
+  }
+  if (org === 'Turbo') return 100;
+  if (org === 'Injecteur') return 80;
+  if (org === 'Pompe à injection') return 90;
+  return 120;
+}
+
+function plafondTTC(seg, org, cfg, trans) {
+  const bases = {Citadine:1800,Berline:3200,Utilitaire:5500,'SUV/4x4':7000,'Premium/Sport':9000};
+  const b = bases[seg] || 3200;
+  if (org === 'Moteur') {
+    const m = {'Moteur complet total (tous périphériques)':1.4,'Moteur complet (turbo+injection)':1.3,'Moteur complet (turbo seul)':1.2,'Moteur complet (injection seule)':1.15,'Moteur nu':1.0};
+    return b * (m[cfg] || 1.0);
+  }
+  if (org === 'Boîte de vitesses') {
+    const m = {'Double embrayage (DSG/EDC/PDK)':1.6,'Automatique convertisseur (EAT/ZF/9G)':1.4,'Robotisée simple (AMT)':0.85,'Manuelle':1.0};
+    return b * (m[trans] || 1.0);
+  }
+  return b;
+}
+
+function getNiveau(client, rare, urg) {
+  let s = (client==='Nouveau'?2:0)+(rare==='Rare'?1:0)+(urg==='Oui'?1:0);
+  return {text: s===0?'N1':s<=2?'N2':s===3?'N3':'N4', score: s};
+}
+
+function getBareme(org, etat, niv, gar, trans) {
+  const n = niv; const g = parseInt(gar);
+  const gk = g>=24?24:g>=12?12:6;
+  if (org === 'Moteur') {
+    const occ = {N1:{6:500,12:580,24:680},N2:{6:580,12:680,24:780},N3:{6:680,12:780,24:900},N4:{6:800,12:920,24:1050}};
+    if (etat==='Occasion') return (occ[n]||occ.N1)[gk]||500;
+    if (etat==='Echange std') return {N1:700,N2:850,N3:1000,N4:1150}[n]||700;
+    if (etat==='Neuf') return {N1:500,N2:600,N3:720,N4:870}[n]||500;
+    if (etat==='Reconditionné') return {N1:600,N2:720,N3:850,N4:1000}[n]||600;
+  }
+  if (org === 'Boîte de vitesses') {
+    if (trans === 'Double embrayage (DSG/EDC/PDK)') {
+      if (etat==='Echange std') return {N1:900,N2:1050,N3:1250,N4:1450}[n]||900;
+      const t={N1:{6:600,12:700,24:820},N2:{6:700,12:820,24:950},N3:{6:820,12:970,24:1100},N4:{6:980,12:1130,24:1280}};
+      return (t[n]||t.N1)[gk]||600;
+    }
+    if (trans === 'Automatique convertisseur (EAT/ZF/9G)') {
+      if (etat==='Echange std') return {N1:750,N2:900,N3:1050,N4:1200}[n]||750;
+      const t={N1:{6:450,12:550,24:650},N2:{6:550,12:650,24:750},N3:{6:650,12:780,24:900},N4:{6:780,12:920,24:1050}};
+      return (t[n]||t.N1)[gk]||450;
+    }
+    if (trans === 'Manuelle') {
+      if (etat==='Echange std') return {N1:550,N2:680,N3:800,N4:950}[n]||550;
+      if (etat==='Neuf') return {N1:300,N2:380,N3:460,N4:560}[n]||300;
+      const t={N1:{6:300,12:380,24:460},N2:{6:380,12:460,24:550},N3:{6:460,12:550,24:650},N4:{6:560,12:660,24:780}};
+      return (t[n]||t.N1)[gk]||300;
+    }
+    return {N1:300,N2:380,N3:460,N4:560}[n]||300;
+  }
+  if (org==='Turbo') {
+    if (etat==='Neuf') return {N1:135,N2:160,N3:190,N4:220}[n]||135;
+    const t={N1:{6:150,12:185,24:210},N2:{6:185,12:215,24:240},N3:{6:210,12:250,24:280},N4:{6:245,12:295,24:330}};
+    return (t[n]||t.N1)[gk]||150;
+  }
+  if (org==='Injecteur') return {N1:140,N2:175,N3:205,N4:235}[n]||140;
+  if (org==='Pompe à injection') return {N1:140,N2:195,N3:225,N4:265}[n]||140;
+  return 0;
+}
+
+function configBonus(org, cfg) {
+  if (org !== 'Moteur') return 0;
+  return {'Moteur complet total (tous périphériques)':300,'Moteur complet (turbo+injection)':220,'Moteur complet (turbo seul)':150,'Moteur complet (injection seule)':100,'Moteur nu':0}[cfg]||0;
+}
+
+function coefficients(seg, marque, moteur, org, trans) {
+  const s={Citadine:0.85,Berline:1.0,Utilitaire:1.1,'SUV/4x4':1.15,'Premium/Sport':1.2};
+  const m={Economique:0.92,Standard:1.0,Premium:1.18,'Sport/Rare':1.32};
+  const e={'Diesel commun':1.0,'Diesel haut de gamme':1.1,'Essence commun':1.05,'Essence sportif/rare':1.18,'Hybride':1.12,'Electrique':1.22};
+  const bv={Manuelle:1.0,'Automatique convertisseur (EAT/ZF/9G)':1.35,'Double embrayage (DSG/EDC/PDK)':1.45,'Robotisée simple (AMT)':0.90};
+  return {
+    seg: s[seg]||1, marque: m[marque]||1, moteur: e[moteur]||1,
+    bv: org==='Boîte de vitesses'?(bv[trans]||1):1
+  };
+}
+
+function kmAdj(etat, km) {
+  if (etat !== 'Occasion' || !km) return 1;
+  if (km < 80000) return 1.04;
+  if (km <= 180000) return 1.0;
+  return 0.92;
+}
+
+function savRisk(org, etat, km) {
+  if (org==='Moteur' && etat==='Occasion') {
+    if (km > 180000) return 1.08;
+    if (km > 130000) return 1.04;
+  }
+  return 1.0;
+}
+
+function dynFloor(cout) {
+  if (cout < 400) return cout * 0.50;
+  if (cout < 800) return cout * 0.40;
+  if (cout < 1500) return cout * 0.30;
+  if (cout < 3000) return cout * 0.22;
+  return Math.min(cout * 0.18, 1000);
+}
+
+function r5(v) { return Math.round(v/5)*5; }
+
+function psychoPrice(ttc) {
+  const b = Math.floor(ttc/100)*100;
+  const r = ttc - b;
+  if (r <= 0) return b - 10;
+  if (r <= 50) return b + 49;
+  if (r <= 90) return b + 90;
+  return b + 100 - 10;
+}
+
+function getDecision(marge, pl, nb) {
+  if (!nb && nb !== 0) return {text:'⚪ Saisir nb résultats MC', cls:'', sub:'Nb résultats Motors-Club manquant'};
+  if (marge < pl) return {text:'🔴 PASSE', cls:'dec-passe', sub:`Marge (${fmt(marge)}) < plancher minimum (${fmt(pl)})`};
+  const n = parseInt(nb);
+  if (n <= 2) return {text:'🟢 RÉPONDS', cls:'dec-reponds', sub:`${n} résultat(s) — monopole quasi-total`};
+  if (n <= 5) return marge >= pl*1.15
+    ? {text:'🟢 RÉPONDS', cls:'dec-reponds', sub:`${n} résultats — marge suffisante`}
+    : {text:'🟡 NÉGOCIE', cls:'dec-negocie', sub:`${n} résultats — marge limite, à défendre`};
+  if (n <= 9) return {text:'🟡 NÉGOCIE', cls:'dec-negocie', sub:`${n} résultats — marché concurrentiel`};
+  return {text:'🔴 PASSE', cls:'dec-passe', sub:`${n}+ résultats — marché saturé`};
+}
+
+function chargesParDeal() {
+  const total = S.charges.reduce((s,c) => s+(parseFloat(c.val)||0), 0);
+  const deals = parseInt(gv('ch-deals')||document.getElementById('ch-deals')?.value||15)||15;
+  return total / deals;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// MAIN CALCULATE
+// ═══════════════════════════════════════════════════════════════
+function calculer() {
+  const org = gv('f-organe'), seg = gv('f-segment'), etat = gv('f-etat');
+  const cfg = gv('f-config'), trans = gv('f-trans');
+  const prixFourn = parseFloat(gv('f-prix'))||0;
+  const port = parseFloat(gv('f-port'))||0;
+  const km = parseFloat(gv('f-km'))||0;
+  const gar = gv('f-gar'), marque = gv('f-marque'), moteurF = gv('f-moteur');
+  const client = gv('f-client'), rare = gv('f-rare'), urg = gv('f-urg');
+  const nb = gv('f-nb');
+
+  if (!org || !seg || !prixFourn) {
+    alert('⚠️ Remplis au minimum : type d\'organe, segment et prix fournisseur HT');
+    return;
+  }
+
+  const cout = prixFourn + port;
+  const nivObj = getNiveau(client, rare, urg);
+  const niv = nivObj.text;
+  const pl = plancher(org, etat, gar, trans);
+  const plaf = plafondTTC(seg, org, cfg, trans);
+  const bareme = getBareme(org, etat, niv, gar, trans);
+  const C = coefficients(seg, marque, moteurF, org, trans);
+  const km_adj = kmAdj(etat, km);
+  const sav = savRisk(org, etat, km);
+  const cfgB = configBonus(org, cfg);
+  const dyn = dynFloor(cout);
+
+  const margeBase = bareme * C.seg * C.marque * C.moteur * C.bv * km_adj * sav + cfgB;
+  const margeAvant = Math.max(margeBase, pl, dyn);
+  const plafMarge = Math.max(pl, (plaf/1.2) - cout);
+  const margeReco = r5(Math.min(margeAvant, plafMarge));
+
+  const cpd = chargesParDeal();
+  const marge = S.override !== null ? S.override : margeReco;
+  const prixHT = cout + marge;
+  const prixTTC = prixHT * 1.2;
+  const margeNette = marge - cpd;
+  const margePct = marge / prixHT;
+  const dec = getDecision(marge, pl, nb);
+
+  S.result = {
+    org, seg, etat, cfg, trans, cout, niv, nivScore:nivObj.score,
+    pl, plaf, bareme, C, km_adj, sav, cfgB, dyn,
+    margeReco, marge, prixHT, prixTTC, margeNette, margePct, dec,
+    km, gar, marque, code: gv('f-code'), prixFourn,
+  };
+
+  // Steps
+  ['stp1','stp2'].forEach(id => { document.getElementById(id).className='step done'; });
+  document.getElementById('stp3').className='step active';
+
+  // Show results
+  document.getElementById('res-placeholder').classList.add('hidden');
+  document.getElementById('res-content').classList.remove('hidden');
+
+  // Decision
+  const banner = document.getElementById('dec-banner');
+  banner.className = `dec-banner ${dec.cls}`;
+  document.getElementById('dec-text').textContent = dec.text;
+  document.getElementById('dec-sub').textContent = dec.sub || '';
+
+  // Niveau badge
+  const nb_cls = {N1:'bdg-b',N2:'bdg-g',N3:'bdg-a',N4:'bdg-r'};
+  document.getElementById('niv-badge').textContent = niv;
+  document.getElementById('niv-badge').className = `bdg ${nb_cls[niv]||'bdg-n'}`;
+  document.getElementById('score-info').textContent = `Score: ${nivObj.score}pts`;
+
+  // Main display
+  document.getElementById('r-ttc').textContent = fmt(prixTTC);
+  document.getElementById('r-ht').textContent = fmt(prixHT) + ' HT';
+  document.getElementById('r-marge').textContent = fmt(marge);
+  document.getElementById('r-pct').textContent = fmtPct(margePct) + ' du CA';
+  document.getElementById('r-psycho').textContent = fmt(psychoPrice(prixTTC)) + ' TTC';
+
+  // Detail rows
+  document.getElementById('r-cout').textContent = fmt(cout);
+  document.getElementById('r-bareme').textContent = fmt(bareme);
+  document.getElementById('r-cseg').textContent = `×${C.seg.toFixed(2)} (${seg})`;
+  document.getElementById('r-cmarque').textContent = `×${C.marque.toFixed(2)} (${marque})`;
+  document.getElementById('r-cmoteur').textContent = `×${C.moteur.toFixed(2)} (${moteurF})`;
+  document.getElementById('r-ctrans').textContent = org==='Boîte de vitesses' ? `×${C.bv.toFixed(2)} (${trans})` : '×1.00 (N/A — moteur)';
+  document.getElementById('r-ckm').textContent = `×${km_adj.toFixed(2)} ${km ? '('+km.toLocaleString('fr-FR')+' km)' : '(km non renseigné)'}`;
+  document.getElementById('r-sav').textContent = `×${sav.toFixed(2)} ${sav>1?'⚠️ km élevé':'✅ OK'}`;
+  document.getElementById('r-cfg').textContent = cfgB > 0 ? `+${fmt(cfgB)} (${cfg})` : '0€ (moteur nu ou N/A)';
+  document.getElementById('r-plancher').textContent = fmt(pl);
+  document.getElementById('r-plafond').textContent = fmt(plaf) + ' TTC';
+  document.getElementById('r-mfin').textContent = fmt(marge) + (S.override!==null?' ✏️ (override)':'');
+  document.getElementById('r-pht').textContent = fmt(prixHT);
+  document.getElementById('r-pttc').textContent = fmt(prixTTC);
+  document.getElementById('r-nette').textContent = fmt(margeNette);
+
+  // Override alert
+  const ovAlert = document.getElementById('ov-alert');
+  if (S.override !== null && S.override < pl) {
+    ovAlert.classList.remove('hidden');
+    ovAlert.textContent = `⚠️ Override (${fmt(S.override)}) sous le plancher minimum (${fmt(pl)}) — risque de deal non rentable`;
+  } else { ovAlert.classList.add('hidden'); }
+
+  // Alerts
+  let html = '';
+  if (km > 180000 && etat==='Occasion') html += `<div class="alert alert-w">⚠️ ${km.toLocaleString('fr-FR')} km — kilométrage très élevé, risque SAV +8% intégré dans la marge</div>`;
+  if (marge < pl) html += `<div class="alert alert-e">🔴 Marge (${fmt(marge)}) sous le plancher minimum (${fmt(pl)}) — ce deal est à éviter</div>`;
+  if (prixTTC > plaf) html += `<div class="alert alert-w">⚠️ Prix TTC (${fmt(prixTTC)}) dépasse le plafond marché estimé (${fmt(plaf)}) — risque d'invendable</div>`;
+  if (cfgB > 0) html += `<div class="alert alert-s">✅ Bonus moteur complet +${fmt(cfgB)} inclus dans la marge recommandée</div>`;
+  document.getElementById('alerts-div').innerHTML = html;
+
+  // Pre-fill proposal
+  sv('pp-type', org + (org==='Moteur' && cfg!=='Moteur nu' ? ' complet' : '') + ' occasion');
+  if (km) sv('pp-km', km.toLocaleString('fr-FR'));
+  sv('pp-prix', Math.round(prixTTC));
+  sv('pp-gar', gar + ' mois');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// OVERRIDE
+// ═══════════════════════════════════════════════════════════════
+function applyOv() {
+  const v = parseFloat(gv('ov-input'));
+  if (isNaN(v) || v <= 0) return;
+  S.override = v; calculer();
+}
+function clearOv() { S.override = null; sv('ov-input',''); calculer(); }
+
+// ═══════════════════════════════════════════════════════════════
+// RESET
+// ═══════════════════════════════════════════════════════════════
+function resetForm() {
+  S.result = null; S.override = null;
+  ['f-organe','f-segment','f-config','f-trans','f-code','f-prix','f-km','f-nb'].forEach(id => sv(id,''));
+  sv('f-port','0'); sv('f-gar','12'); sv('f-marque','Standard'); sv('f-moteur','Diesel commun');
+  sv('f-client','Nouveau'); sv('f-rare','Courante'); sv('f-urg','Non'); sv('f-cout','');
+  document.getElementById('sec-moteur').classList.add('hidden');
+  document.getElementById('sec-bv').classList.add('hidden');
+  document.getElementById('res-placeholder').classList.remove('hidden');
+  document.getElementById('res-content').classList.add('hidden');
+  ['stp1'].forEach(id => document.getElementById(id).className='step active');
+  ['stp2','stp3'].forEach(id => document.getElementById(id).className='step');
+  sv('ov-input','');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// AI PARSE
+// ═══════════════════════════════════════════════════════════════
+async function parseAI() {
+  const dem = document.getElementById('dem-text').value.trim();
+  if (!dem) return;
+  const btn = document.getElementById('parse-btn');
+  const load = document.getElementById('parse-load');
+  btn.disabled = true; load.classList.remove('hidden');
+  document.getElementById('parse-result').innerHTML = '';
+
+  try {
+    const prompt = `Tu es un expert en pièces auto mécaniques. Analyse cette demande France Casse et extrait les informations clés.
+
+Demande: "${dem}"
+
+Réponds UNIQUEMENT en JSON valide (pas de markdown) avec ces champs exacts:
+{
+  "organe": "Moteur|Boîte de vitesses|Turbo|Injecteur|Pompe à injection",
+  "segment": "Citadine|Berline|Utilitaire|SUV/4x4|Premium/Sport",
+  "marque": "marque du véhicule",
+  "modele": "modèle du véhicule",
+  "annee": "année ou vide",
+  "motorisation": "ex: 1.5 dCi 90ch ou H5F403",
+  "famille_marque": "Economique|Standard|Premium|Sport/Rare",
+  "famille_moteur": "Diesel commun|Diesel haut de gamme|Essence commun|Essence sportif/rare|Hybride|Electrique",
+  "urgence": "Oui|Non",
+  "notes": "observation courte"
+}`;
+
+    const r = await fetch('/api/analyze', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({prompt, type:'parse'})
+    });
+    const data = await r.json();
+    if (!data.content) throw new Error(data.error || 'Erreur API');
+    const parsed = JSON.parse(data.content.replace(/```json|```/g,'').trim());
+
+    if (parsed.organe) { sv('f-organe', parsed.organe); onOrganeChange(); }
+    if (parsed.segment) sv('f-segment', parsed.segment);
+    if (parsed.famille_marque) sv('f-marque', parsed.famille_marque);
+    if (parsed.famille_moteur) sv('f-moteur', parsed.famille_moteur);
+    if (parsed.urgence === 'Oui') sv('f-urg', 'Oui');
+    if (parsed.annee) sv('pp-an', parsed.annee);
+
+    document.getElementById('parse-result').innerHTML =
+      `<div class="alert alert-s" style="margin-top:8px">✅ <strong>${parsed.marque||''} ${parsed.modele||''}</strong> ${parsed.annee||''} — ${parsed.motorisation||''} | ${parsed.notes||''}</div>`;
+  } catch(e) {
+    document.getElementById('parse-result').innerHTML =
+      `<div class="alert alert-e" style="margin-top:8px">❌ Erreur : ${e.message} — Remplis manuellement</div>`;
+  }
+  btn.disabled = false; load.classList.add('hidden');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// GENERATE PROPOSAL
+// ═══════════════════════════════════════════════════════════════
+function goProposal() {
+  document.querySelector('[data-tab="proposal"]').click();
+}
+
+async function genProp() {
+  const type = gv('pp-type'), annee = gv('pp-an'), km = gv('pp-km');
+  const prix = gv('pp-prix'), port = gv('pp-port')||'inclus';
+  const gar = gv('pp-gar'), autres = gv('pp-autres'), arg = gv('pp-arg');
+  if (!prix) { alert('Remplis le prix TTC'); return; }
+
+  const load = document.getElementById('prop-load');
+  load.classList.remove('hidden');
+
+  try {
+    const prompt = `Tu es un commercial B2C spécialisé pièces auto. Rédige une proposition commerciale TRÈS COURTE pour France Casse (max 6 lignes, petit espace).
+
+- Pièce: ${type}
+- Année: ${annee||'N/P'}
+- KM: ${km||'N/P'} km
+- Prix: ${prix}€ TTC
+- Port: ${port}
+- Garantie: ${gar}
+- Autres offres dispo: ${autres==='oui'?'Oui':'Non'}
+- Argument principal: ${arg||'garantie et qualité'}
+
+Commence par "Bonjour," · Pro et direct · Valorise la garantie · Max 60 mots · Pas de fioritures`;
+
+    const r = await fetch('/api/analyze', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({prompt, type:'proposal'})
+    });
+    const data = await r.json();
+    if (!data.content) throw new Error(data.error || 'Erreur');
+    document.getElementById('prop-out').textContent = data.content;
+    document.getElementById('prop-out').style.color = 'var(--gray2)';
+  } catch(e) {
+    document.getElementById('prop-out').textContent =
+      `Bonjour,\n\n${type}${annee?' — '+annee:''}${km?' — '+km+' km':''}\n✅ Testé et contrôlé — Garantie ${gar} — SAV 6j/7\n🚚 Frais de port : ${port} TTC\n\nPrix : ${prix} € TTC\n\n${autres==='oui'?"D'autres références disponibles.\n":''}Contactez-nous pour toute question.`;
+    document.getElementById('prop-out').style.color = 'var(--gray2)';
+  }
+  load.classList.add('hidden');
+}
+
+function copyText(id) {
+  const txt = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = event.target; btn.textContent = '✅ Copié!';
+    setTimeout(() => btn.textContent = '📋 Copier', 2000);
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SAVE & HISTORY
+// ═══════════════════════════════════════════════════════════════
+function saveDeal() {
+  if (!S.result) return;
+  const r = S.result;
+  S.history.unshift({
+    id: Date.now(), date: new Date().toLocaleDateString('fr-FR'),
+    org: r.org, code: r.code, seg: r.seg, etat: r.etat,
+    cout: r.cout, marge: r.marge, prixHT: r.prixHT, prixTTC: r.prixTTC,
+    margePct: r.margePct, margeNette: r.margeNette, niv: r.niv, dec: r.dec.text,
+    km: r.km, gar: r.gar,
+  });
+  localStorage.setItem('mv_hist', JSON.stringify(S.history));
+  updateHdrStats();
+  const btn = event.target; btn.textContent = '✅ Sauvegardé!'; btn.classList.add('btn-g');
+  setTimeout(() => { btn.textContent = '💾 Sauvegarder'; btn.classList.remove('btn-g'); }, 2000);
+}
+
+function renderHistory() {
+  const list = document.getElementById('hist-list');
+  if (!S.history.length) {
+    list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray4)"><div style="font-size:32px;margin-bottom:8px">📭</div>Aucun deal — calcule et sauvegarde depuis l\'onglet Pricing</div>';
+    ['st-deals','st-ca','st-mb','st-mn','st-pct'].forEach(id => sv(id,'0'));
+    sv('st-ca','0€'); sv('st-mb','0€'); sv('st-mn','0€'); sv('st-pct','0%');
+    return;
+  }
+  const totCA = S.history.reduce((s,d)=>s+d.prixHT,0);
+  const totM = S.history.reduce((s,d)=>s+d.marge,0);
+  const cpd = chargesParDeal();
+  const totN = totM - cpd*S.history.length;
+  sv('st-deals', S.history.length);
+  sv('st-ca', Math.round(totCA).toLocaleString('fr-FR')+'€');
+  sv('st-mb', Math.round(totM).toLocaleString('fr-FR')+'€');
+  sv('st-mn', Math.round(totN).toLocaleString('fr-FR')+'€');
+  sv('st-pct', fmtPct(totM/totCA));
+
+  list.innerHTML = S.history.map(d => `
+    <div class="hist-item">
+      <div style="flex:1">
+        <div class="hist-ref">${d.org}${d.code?' — '+d.code:''}</div>
+        <div style="font-size:11px;color:var(--gray4);margin-top:2px">${d.date} · ${d.seg} · ${d.etat} · ${d.km?d.km.toLocaleString('fr-FR')+'km · ':''}Gar.${d.gar}m · ${d.niv}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:var(--orange)">${Math.round(d.prixTTC).toLocaleString('fr-FR')}€ TTC</div>
+        <div style="font-size:11px;color:var(--green)">+${Math.round(d.marge).toLocaleString('fr-FR')}€ · ${fmtPct(d.margePct)}</div>
+        <div style="font-size:10px;color:var(--gray4);margin-top:1px">${d.dec}</div>
+      </div>
+      <button class="btn btn-s btn-sm" onclick="deleteHist(${d.id})" style="padding:5px 8px;margin-left:4px">🗑️</button>
+    </div>
+  `).join('');
+}
+
+function deleteHist(id) {
+  S.history = S.history.filter(d => d.id !== id);
+  localStorage.setItem('mv_hist', JSON.stringify(S.history));
+  renderHistory(); updateHdrStats();
+}
+
+function clearHist() {
+  if (!confirm('Vider tout l\'historique ?')) return;
+  S.history = []; localStorage.removeItem('mv_hist');
+  renderHistory(); updateHdrStats();
+}
+
+function updateHdrStats() {
+  const el = document.getElementById('hdr-stats');
+  if (!S.history.length) { el.textContent = '0 deals · 0€ marge'; return; }
+  const totM = S.history.reduce((s,d)=>s+d.marge,0);
+  el.textContent = `${S.history.length} deal${S.history.length>1?'s':''} · ${Math.round(totM).toLocaleString('fr-FR')}€ marge`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PARAMS
+// ═══════════════════════════════════════════════════════════════
+function renderParams() {
+  const wrap = document.getElementById('charges-wrap');
+  wrap.innerHTML = S.charges.map((c,i) => `
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <input class="fi" value="${c.label}" onchange="S.charges[${i}].label=this.value;saveCharges()" style="flex:2">
+      <input class="fi" type="number" value="${c.val}" onchange="S.charges[${i}].val=parseFloat(this.value)||0;updateCharges()" style="width:80px;text-align:center">
+      <span style="font-size:11px;color:var(--gray4);white-space:nowrap">€/mois</span>
+      <button class="btn btn-s btn-sm" style="padding:5px 8px" onclick="removeCharge(${i})">✕</button>
+    </div>
+  `).join('');
+  updateCharges();
+}
+
+function updateCharges() {
+  const total = S.charges.reduce((s,c)=>s+(parseFloat(c.val)||0),0);
+  const deals = parseInt(document.getElementById('ch-deals')?.value||15)||15;
+  sv('ch-total', total.toLocaleString('fr-FR')+'€');
+  sv('ch-deal', (total/deals).toFixed(0)+'€');
+  saveCharges();
+}
+
+function saveCharges() { localStorage.setItem('mv_charges', JSON.stringify(S.charges)); }
+
+function addCharge() {
+  S.charges.push({label:'Nouvelle charge', val:0});
+  renderParams();
+}
+
+function removeCharge(i) {
+  S.charges.splice(i,1); saveCharges(); renderParams();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+updateHdrStats();
+onOrganeChange();
+</script>
+</body>
+</html>
