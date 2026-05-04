@@ -639,10 +639,10 @@ Contactez-nous pour toute question.</div>
         <div class="card-title">📏 Planchers minimum marge</div>
         <table class="ref-table">
           <tr><th>Catégorie</th><th>6 mois</th><th>12 mois</th><th>24 mois</th><th>ES</th></tr>
-          <tr><td>🔧 Moteur</td><td>500€</td><td>650€</td><td>800€</td><td>850€</td></tr>
-          <tr><td>⚙️ BV Manuelle</td><td>400€</td><td>500€</td><td>600€</td><td>750€</td></tr>
-          <tr><td>🤖 BV Auto conv.</td><td>600€</td><td>700€</td><td>900€</td><td>1 000€</td></tr>
-          <tr><td>🔀 BV DSG/EDC</td><td>750€</td><td>900€</td><td>1 100€</td><td>1 200€</td></tr>
+          <tr><td>🔧 Moteur</td><td>400€</td><td>500€</td><td>650€</td><td>700€</td></tr>
+          <tr><td>⚙️ BV Manuelle</td><td>300€</td><td>350€</td><td>450€</td><td>550€</td></tr>
+          <tr><td>🤖 BV Auto conv.</td><td>350€</td><td>450€</td><td>650€</td><td>750€</td></tr>
+          <tr><td>🔀 BV DSG/EDC</td><td>450€</td><td>600€</td><td>800€</td><td>900€</td></tr>
           <tr><td>🌀 Turbo</td><td colspan="4" style="text-align:center">120€ (flat)</td></tr>
           <tr><td>💧 Injecteur</td><td colspan="4" style="text-align:center">100€ (flat)</td></tr>
           <tr><td>⛽ Pompe injection</td><td colspan="4" style="text-align:center">110€ (flat)</td></tr>
@@ -677,7 +677,7 @@ Contactez-nous pour toute question.</div>
         <div style="font-size:12px;line-height:2;color:var(--gray2)">
           <div><strong style="color:var(--orange)">Niveau scoring :</strong> Nouveau=2pts · Rare=1pt · Urgence=1pt → N1(0) N2(1-2) N3(3) N4(4)</div>
           <div><strong style="color:var(--orange)">Marge reco :</strong> MAX(barème × coefficients, plancher_min, marge_dyn_achat)</div>
-          <div><strong style="color:var(--orange)">Marge dyn. :</strong> &lt;600€ achat→65% · 600-1500€→35% · 1500-3000€→28% · &gt;3000€→22% plafonné 1200€</div>
+          <div><strong style="color:var(--orange)">Marge dyn. :</strong> &lt;400€→50% · 400-800€→40% · 800-1500€→30% · 1500-3000€→22% · &gt;3000€→18% plafonné 1000€</div>
           <div><strong style="color:var(--orange)">Km ajustement :</strong> &lt;80k→+4% · 80-180k→base · &gt;180k→-8%</div>
           <div><strong style="color:var(--orange)">Risque SAV :</strong> Moteur &gt;130k→+4% · &gt;180k→+8%</div>
           <div><strong style="color:var(--orange)">Plafond :</strong> Prix TTC ne peut pas dépasser le plafond segment × type</div>
@@ -763,27 +763,27 @@ document.getElementById('f-port').addEventListener('input', updateCout);
 function plancher(org, etat, gar, trans) {
   const g = parseInt(gar);
   if (org === 'Moteur') {
-    if (etat === 'Echange std') return 850;
-    if (etat === 'Reconditionné') return 700;
-    if (etat === 'Neuf') return 650;
-    if (g >= 24) return 800; if (g >= 12) return 650; if (g >= 6) return 500; return 450;
+    if (etat === 'Echange std') return 700;
+    if (etat === 'Reconditionné') return 550;
+    if (etat === 'Neuf') return 500;
+    if (g >= 24) return 650; if (g >= 12) return 500; if (g >= 6) return 400; return 350;
   }
   if (org === 'Boîte de vitesses') {
     if (trans === 'Double embrayage (DSG/EDC/PDK)') {
-      if (etat === 'Echange std') return 1200;
-      if (g >= 24) return 1100; if (g >= 12) return 900; return 750;
+      if (etat === 'Echange std') return 900;
+      if (g >= 24) return 800; if (g >= 12) return 600; return 450;
     }
     if (trans === 'Automatique convertisseur (EAT/ZF/9G)') {
-      if (etat === 'Echange std') return 1000;
-      if (g >= 24) return 900; if (g >= 12) return 700; return 600;
+      if (etat === 'Echange std') return 750;
+      if (g >= 24) return 650; if (g >= 12) return 450; return 350;
     }
-    if (etat === 'Echange std') return 750;
-    if (g >= 24) return 600; if (g >= 12) return 500; if (g >= 6) return 400; return 350;
+    if (etat === 'Echange std') return 550;
+    if (g >= 24) return 450; if (g >= 12) return 350; if (g >= 6) return 300; return 250;
   }
-  if (org === 'Turbo') return 120;
-  if (org === 'Injecteur') return 100;
-  if (org === 'Pompe à injection') return 110;
-  return 150;
+  if (org === 'Turbo') return 100;
+  if (org === 'Injecteur') return 80;
+  if (org === 'Pompe à injection') return 90;
+  return 120;
 }
 
 function plafondTTC(seg, org, cfg, trans) {
@@ -809,30 +809,30 @@ function getBareme(org, etat, niv, gar, trans) {
   const n = niv; const g = parseInt(gar);
   const gk = g>=24?24:g>=12?12:6;
   if (org === 'Moteur') {
-    const occ = {N1:{6:700,12:780,24:870},N2:{6:790,12:880,24:970},N3:{6:880,12:980,24:1080},N4:{6:970,12:1080,24:1180}};
-    if (etat==='Occasion') return (occ[n]||occ.N1)[gk]||700;
-    if (etat==='Echange std') return {N1:900,N2:1050,N3:1200,N4:1380}[n]||900;
-    if (etat==='Neuf') return {N1:650,N2:750,N3:870,N4:1000}[n]||650;
-    if (etat==='Reconditionné') return {N1:750,N2:880,N3:1000,N4:1150}[n]||750;
+    const occ = {N1:{6:500,12:580,24:680},N2:{6:580,12:680,24:780},N3:{6:680,12:780,24:900},N4:{6:800,12:920,24:1050}};
+    if (etat==='Occasion') return (occ[n]||occ.N1)[gk]||500;
+    if (etat==='Echange std') return {N1:700,N2:850,N3:1000,N4:1150}[n]||700;
+    if (etat==='Neuf') return {N1:500,N2:600,N3:720,N4:870}[n]||500;
+    if (etat==='Reconditionné') return {N1:600,N2:720,N3:850,N4:1000}[n]||600;
   }
   if (org === 'Boîte de vitesses') {
     if (trans === 'Double embrayage (DSG/EDC/PDK)') {
-      if (etat==='Echange std') return {N1:1200,N2:1400,N3:1600,N4:1850}[n]||1200;
-      const t={N1:{6:800,12:900,24:1050},N2:{6:950,12:1080,24:1200},N3:{6:1100,12:1250,24:1400},N4:{6:1300,12:1450,24:1600}};
-      return (t[n]||t.N1)[gk]||900;
+      if (etat==='Echange std') return {N1:900,N2:1050,N3:1250,N4:1450}[n]||900;
+      const t={N1:{6:600,12:700,24:820},N2:{6:700,12:820,24:950},N3:{6:820,12:970,24:1100},N4:{6:980,12:1130,24:1280}};
+      return (t[n]||t.N1)[gk]||600;
     }
     if (trans === 'Automatique convertisseur (EAT/ZF/9G)') {
-      if (etat==='Echange std') return {N1:1000,N2:1150,N3:1320,N4:1500}[n]||1000;
-      const t={N1:{6:650,12:750,24:850},N2:{6:780,12:880,24:980},N3:{6:900,12:1000,24:1120},N4:{6:1050,12:1150,24:1250}};
-      return (t[n]||t.N1)[gk]||750;
+      if (etat==='Echange std') return {N1:750,N2:900,N3:1050,N4:1200}[n]||750;
+      const t={N1:{6:450,12:550,24:650},N2:{6:550,12:650,24:750},N3:{6:650,12:780,24:900},N4:{6:780,12:920,24:1050}};
+      return (t[n]||t.N1)[gk]||450;
     }
     if (trans === 'Manuelle') {
-      if (etat==='Echange std') return {N1:780,N2:920,N3:1050,N4:1200}[n]||780;
-      if (etat==='Neuf') return {N1:430,N2:500,N3:570,N4:670}[n]||430;
-      const t={N1:{6:520,12:590,24:660},N2:{6:600,12:680,24:760},N3:{6:680,12:770,24:860},N4:{6:760,12:860,24:960}};
-      return (t[n]||t.N1)[gk]||520;
+      if (etat==='Echange std') return {N1:550,N2:680,N3:800,N4:950}[n]||550;
+      if (etat==='Neuf') return {N1:300,N2:380,N3:460,N4:560}[n]||300;
+      const t={N1:{6:300,12:380,24:460},N2:{6:380,12:460,24:550},N3:{6:460,12:550,24:650},N4:{6:560,12:660,24:780}};
+      return (t[n]||t.N1)[gk]||300;
     }
-    return {N1:450,N2:530,N3:620,N4:720}[n]||450;
+    return {N1:300,N2:380,N3:460,N4:560}[n]||300;
   }
   if (org==='Turbo') {
     if (etat==='Neuf') return {N1:135,N2:160,N3:190,N4:220}[n]||135;
@@ -876,10 +876,11 @@ function savRisk(org, etat, km) {
 }
 
 function dynFloor(cout) {
-  if (cout < 600) return cout * 0.65;
-  if (cout < 1500) return cout * 0.35;
-  if (cout < 3000) return cout * 0.28;
-  return Math.min(cout * 0.22, 1200);
+  if (cout < 400) return cout * 0.50;
+  if (cout < 800) return cout * 0.40;
+  if (cout < 1500) return cout * 0.30;
+  if (cout < 3000) return cout * 0.22;
+  return Math.min(cout * 0.18, 1000);
 }
 
 function r5(v) { return Math.round(v/5)*5; }
