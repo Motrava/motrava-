@@ -1,22 +1,45 @@
-export default async function handler(req, res) {
-  // CORS
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') return res.status(200).end();
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+export const config = {
+  runtime: 'edge',
+};
 
-  const { prompt, type } = req.body;
-  if (!prompt) return res.status(400).json({ error: 'Missing prompt' });
+export default async function handler(req) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json',
+  };
+
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { status: 200, headers });
+  }
+
+  if (req.method !== 'POST') {
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), { status: 405, headers });
+  }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) return res.status(500).json({ error: 'API key not configured' });
+  if (!apiKey) {
+    return new Response(JSON.stringify({ error: 'ANTHROPIC_API_KEY not configured' }), { status: 500, headers });
+  }
+
+  let body;
+  try {
+    body = await req.json();
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Invalid JSON body' }), { status: 400, headers });
+  }
+
+  const { prompt, type } = body;
+  if (!prompt) {
+    return new Response(JSON.stringify({ error: 'Missing prompt' }), { status: 400, headers });
+  }
+
+  const systemPrompt = type === 'proposal'
+    ? 'Tu es un commercial B2C spécialisé pièces auto. Tu rédiges des propositions commerciales courtes et professionnelles pour France Casse.'
+    : 'Tu es un expert en pièces auto mécaniques. Tu analyses des demandes de pièces et extrais les informations clés en JSON strict.';
 
   try {
-    const systemPrompt = type === 'proposal'
-      ? 'Tu es un commercial B2C et B2B spécialisé pièces auto. Tu rédiges des propositions commerciales courtes et professionnelles pour Motrava.'
-      : 'Tu es un expert en pièces auto mécaniques. Tu analyses des demandes de pièces et extrais les informations clés en JSON.';
-
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -25,22 +48,31 @@ export default async function handler(req, res) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
+        model: 'claude-haiku-4-5-20251001',
         max_tokens: 500,
         system: systemPrompt,
         messages: [{ role: 'user', content: prompt }],
       }),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      const err = await response.text();
-      return res.status(response.status).json({ error: err });
+      return new Response(
+        JSON.stringify({ error: data.error?.message || 'Anthropic API error', status: response.status }),
+        { status: response.status, headers }
+      );
     }
 
-    const data = await response.json();
-    return res.status(200).json({ content: data.content[0].text });
+    return new Response(
+      JSON.stringify({ content: data.content[0].text }),
+      { status: 200, headers }
+    );
 
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { status: 500, headers }
+    );
   }
 }
